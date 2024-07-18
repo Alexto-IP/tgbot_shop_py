@@ -365,7 +365,7 @@ def send_item_info(message, item_id):
     price = db.get_item_price(item_id)
     discount = db.get_item_percentage_discount(item_id)
     collection = db.get_item_collection(item_id)
-    img = open("img/drop1_gr.jpg", 'rb')
+    img = open(f"img/{item_id}_{item_name}_{item_type}.jpg", 'rb')
     count = db.get_item_count(item_id)
     kb = types.InlineKeyboardMarkup(row_width=2)
     kb.add(types.InlineKeyboardButton(text='Поставка товара', callback_data=f'add_item_count|{item_id}'))

@@ -110,7 +110,7 @@ class SQLither:
                 result = list(self.cursor.execute("SELECT DISTINCT `item_name` FROM `catalog` WHERE `item_type` = ?",
                                                   (item_type,)).fetchall())
             elif int(discount_status) == 1:
-                result = list(self.cursor.execute("SELECT DISTINCT `item_name` FROM `catalog` WHERE `item_type` = ? AND"
+                result = list(self.cursor.execute("SELECT DISTINCT `item_name` FROM `catalog` WHERE `item_type` = ? AND "
                                                   "`percentage_discount` > 0", (item_type,)).fetchall())
             result_list = []
             result_str = f"\nСписок числящихся товаров:"

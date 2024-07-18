@@ -97,7 +97,7 @@ def show_item_info(call):
     item_size = callback_data_parts[3]
     item_id = db.get_item_id(item_name, item_type, item_size)
     price = db.get_item_price(item_id)
-    img = open("img/drop1_gr.jpg", 'rb')
+    img = open(f"img/{item_id}_{item_name}_{item_type}.jpg", 'rb')
     kb = types.InlineKeyboardMarkup(row_width=2)
     if db.get_item_count(item_id) > 0:
         kb.add(types.InlineKeyboardButton(text='Добавить в корзину', callback_data=f"add_to_cart|{item_id}"))

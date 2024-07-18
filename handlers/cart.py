@@ -37,6 +37,7 @@ def add_to_cart(call):
 def cart_kb():
     kb = types.InlineKeyboardMarkup(row_width=2)
     kb.add(types.InlineKeyboardButton(text='Редактировать', callback_data="change_cart"),
+           types.InlineKeyboardButton(text='Связь с менеджером', url='https://t.me/dufff_t'),
            types.InlineKeyboardButton(text='🔙Назад', callback_data="delete_message"))
     return kb
 
@@ -56,7 +57,8 @@ def show_cart(message):
                 result += "{} - {} - товар закончился.\n".format(db.get_item_name(item_id), db.get_item_size(item_id))
             amount += float(price) * int(db.get_item_quantity_cart(message.from_user.id, item_id))
         bot.send_message(message.from_user.id,
-                         'Товары в твоей корзине:\n{} \nТвоя персональная скидка {}% \nСумма с учетом скидки: {} руб'
+                         'Товары в твоей корзине:\n{} \nТвоя персональная скидка {}% \nСумма с учетом скидки: {} руб. '
+                         '\n\nДля оформления заказа перешлите данное сообщение @dufff_t'
                          .format(result, str(db.get_user_discount(message.from_user.id)), str(amount)),
                          reply_markup=cart_kb())
     else:
